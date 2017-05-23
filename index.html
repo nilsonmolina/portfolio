@@ -45,8 +45,8 @@
     </head>
     <body>
         <span id="console-text">
-            Microsoft Windows [Version 10.0.14393] <br>
-            (c) 2016 Microsoft Corporation. All rights reserved.<br>
+            Microsoft Windex [Version 13.0.14393] <br>
+            (c) 2017 Microsoft Corporation. All your rights belong to me.<br>
             <br>
             C:\Users\root>
         </span>
@@ -64,14 +64,18 @@
             var slowToken = '*';
             var slowModifier = 3; //speed = speed + (speed * slowModifer);
             var text = [
-                "%Woah... can you see this?",
+                "%%%Hey... can you see this?%",
                 "Do you realize where you are?",
                 "You're in *m*y* *d*o*m*a*i*n* *now", 
-                "that's right, *'*I*'* am in control now",
-                "muahahaha",
-                "I can pretty much access anything on your system",
-                "like your search history*.*.*.% or your saved passwords*.*.*.% yes,* even your bank accounts*.*.*.% and if I search hard enough,* even your deepest darkest secrets*.*.*.*",
-                "%nah just messing,* they're all totally safe! %This is actually just an empty page that I will eventually build my portfolio site on :P%"
+                "mua*ha*ha*ha*ha",
+                "hmmm*... now that you're here, maybe i should peruse your search history...% or your saved passwords*?*?*?% how about getting access to your bank accounts... or maybe, I can search through your file system and find your *deepest*,* darkest* *secrets",
+                "%nah just messing,* %if you're seeing this, it's because I haven't finished creating my portfolio website yet. Should be up soon! %%:%P%%%%%%%%",
+                "%%%%%%%%Are you still there?!?!%%%%%%%%",
+                "%%%%%%%%You know that nothing else is going to happen right?%%%%%%%%",
+                "%%%%%%%%What exactly are you expecting me to say?%%%%%%%%",
+                "%%%%%%%%Look...% I% don't% have% anything% else% in% my% programming%...%% So you should just go already?%%%%%%%%",
+                "%%%%%%%%I honestly don't know who is the bigger loser...%% you or the guy who spent time actually writing this code -.-%%%%%%%%"
+                
             ];
             
             //private variables
@@ -99,7 +103,12 @@
                     } else {
                         typeWriter.innerHTML = typeWriter.innerHTML + letter;
                         lettersAdded++;
-                        delay = speed + (Math.random() * 100);
+                        
+                        if (['.',',','?','!',''].indexOf(letter) >= 0) {
+                            delay = speed + (speed * slowModifier);
+                        } else {
+                            delay = speed + (Math.random() * 100);
+                        }
                     }                    
                     currentLetterIndex++;
                     
