@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <title>The Domain</title>
+        <style>
+            body {
+                background-color: #000;
+                padding: 1%;
+                color: #ccc;
+                font-size: 1em;
+                font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+            }
+            #typewriter {
+                color: white;
+            }
+            #cursor{
+                color: white;
+                
+                opacity: 1;
+                -webkit-animation: blink 0.5s infinite;
+                -moz-animation: blink 0.5s infinite;
+                animation: blink 0.5s infinite;
+                
+                -webkit-transform: scale(1, 3);
+                -moz-transform: scale(1, 3);
+                -ms-transform: scale(1, 3);
+                -o-transform: scale(1, 3);
+                transform: scale(1, 3);
+            }
+            @keyframes blink{
+                0% { opacity:1; }
+                50% { opacity:0; }
+                100% { opacity:1; }
+            }
+            @-webkit-keyframes blink{
+                0% { opacity:1; }
+                50% { opacity:0; }
+                100% { opacity:1; }
+            }
+            @-moz-keyframes blink{
+                0% { opacity:1; }
+                50% { opacity:0; }
+                100% { opacity:1; }
+            }
+        </style>
+    </head>
+    <body>
+        <span id="console-text">
+            Microsoft Windows [Version 10.0.14393] <br>
+            (c) 2016 Microsoft Corporation. All rights reserved.<br>
+            <br>
+            C:\Users\root>
+        </span>
+        <span id="typewriter"></span>
+        <span id="cursor">_</span>
+               
+        <script>
+            // configuration
+            var typeWriter = document.getElementById('typewriter');
+            var multiLine = false;
+            var speed = 75;
+            var waitDurationBeforeNextLine = 3000;
+            var pauseToken = '%';
+            var pauseDuration = 2000;
+            var slowToken = '*';
+            var slowModifier = 3; //speed = speed + (speed * slowModifer);
+            var text = [
+                "%Woah... can you see this?",
+                "Do you realize where you are?",
+                "You're in *m*y* *d*o*m*a*i*n* *now", 
+                "that's right, *'*I*'* am in control now",
+                "muahahaha",
+                "I can pretty much access anything on your system",
+                "like your search history*.*.*.% or your saved passwords*.*.*.% yes,* even your bank accounts*.*.*.% and if I search hard enough,* even your deepest darkest secrets*.*.*.*",
+                "%nah just messing,* they're all totally safe! %This is actually just an empty page that I will eventually build my portfolio site on :P%"
+            ];
+            
+            //private variables
+            var currentLine = 0;
+            var currentLetterIndex = 0;
+            var lettersAdded = 0;
+            var lettersRemoved = 0;
+            
+            function type() {
+                var delay = 0;
+                
+                if (currentLine === text.length){
+                    return;
+                }
+                
+                var line = text[currentLine];
+                
+                if(currentLetterIndex < line.length) {
+                    var letter = line.charAt(currentLetterIndex);
+                    
+                    if (letter === pauseToken) {
+                        delay = pauseDuration;
+                    } else if (letter === slowToken) {
+                        delay = speed + (speed * slowModifier);
+                    } else {
+                        typeWriter.innerHTML = typeWriter.innerHTML + letter;
+                        lettersAdded++;
+                        delay = speed + (Math.random() * 100);
+                    }                    
+                    currentLetterIndex++;
+                    
+                    setTimeout(type, delay);
+                } else if(multiLine){
+                    setTimeout(newLine, waitDurationBeforeNextLine);
+                } else {
+                    numberOfLettersToDelete = currentLetterIndex + 1;
+                    setTimeout(erase, waitDurationBeforeNextLine);
+                }         
+            };
+            
+            function newLine() {
+                typeWriter.innerHTML = typeWriter.innerHTML + '<br>C:\\Users\\root> '
+                resetCounters();
+                currentLine++;
+                
+                setTimeout(type, 1000);
+            };
+            
+            function erase() {
+                var delay;
+                
+                if (lettersAdded > 0){
+                    
+                    if (lettersRemoved === 1) {
+                        delay = speed * 2;
+                    } else {
+                        delay = speed - (Math.random() * 100)
+                    }
+                    
+                    typeWriter.textContent = typeWriter.textContent.slice(0, -1);
+                    lettersAdded--;
+                    lettersRemoved++;
+
+                    setTimeout(erase, delay);
+                } else {
+                    resetCounters();
+                    currentLine++;
+                    setTimeout(type, waitDurationBeforeNextLine / 2);
+                }
+            };
+            
+            function resetCounters() {
+                currentLetterIndex = 0;
+                lettersAdded = 0;
+                lettersRemoved = 0;
+            };
+            
+            type();
+            
+        </script>
+    </body>
+</html>
