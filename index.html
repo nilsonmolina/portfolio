@@ -6,7 +6,7 @@
                 background-color: #000;
                 padding: 1%;
                 color: #ccc;
-                font-size: 1em;
+                font-size: 16px;
                 font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
             }
             #typewriter {
@@ -14,12 +14,12 @@
             }
             #cursor{
                 color: white;
-                
+
                 opacity: 1;
                 -webkit-animation: blink 0.5s infinite;
                 -moz-animation: blink 0.5s infinite;
                 animation: blink 0.5s infinite;
-                
+
                 -webkit-transform: scale(1, 3);
                 -moz-transform: scale(1, 3);
                 -ms-transform: scale(1, 3);
@@ -50,116 +50,125 @@
             <br>
             C:\Users\root>
         </span>
+        <span id="console-text"></span>
         <span id="typewriter"></span>
         <span id="cursor">_</span>
-               
+
         <script>
-            // configuration
-            var typeWriter = document.getElementById('typewriter');
-            var multiLine = false;
-            var speed = 75;
-            var waitDurationBeforeNextLine = 3000;
-            var pauseToken = '%';
-            var pauseDuration = 2000;
-            var slowToken = '*';
-            var slowModifier = 3; //speed = speed + (speed * slowModifer);
-            var text = [
-                "%%%Hey... can you see this?%",
-                "Do you realize where you are?",
-                "You're in *m*y* *d*o*m*a*i*n* *now", 
-                "mua*ha*ha*ha*ha",
-                "hmmm*... now that you're here, maybe i should peruse your search history...% or your saved passwords*?*?*?% how about getting access to your bank accounts... or maybe, I can search through your file system and find your *deepest*,* darkest* *secrets",
-                "%nah just messing,* %if you're seeing this, it's because I haven't finished creating my portfolio website yet. Should be up soon! %%:%P%%%%%%%%",
-                "%%%%%%%%Are you still there?!?!%%%%%%%%",
-                "%%%%%%%%You know that nothing else is going to happen right?%%%%%%%%",
-                "%%%%%%%%What exactly are you expecting me to say?%%%%%%%%",
-                "%%%%%%%%Look...% I% don't% have% anything% else% in% my% programming%...%% So you should just go already?%%%%%%%%",
-                "%%%%%%%%I honestly don't know who is the bigger loser...%% you or the guy who spent time actually writing this code -.-%%%%%%%%"
-                
-            ];
-            
-            //private variables
-            var currentLine = 0;
-            var currentLetterIndex = 0;
-            var lettersAdded = 0;
-            var lettersRemoved = 0;
-            
-            function type() {
-                var delay = 0;
-                
-                if (currentLine === text.length){
-                    return;
-                }
-                
-                var line = text[currentLine];
-                
-                if(currentLetterIndex < line.length) {
-                    var letter = line.charAt(currentLetterIndex);
-                    
-                    if (letter === pauseToken) {
-                        delay = pauseDuration;
-                    } else if (letter === slowToken) {
+        // configuration
+        var typeWriter = document.getElementById('typewriter');
+        var multiLine = false;
+        var speed = 65;
+        var waitDurationBeforeNextLine = 4000;
+        var pauseToken = '%';
+        var pauseDuration = 2000;
+        var slowToken = '*';
+        var slowModifier = 3; //speed = speed + (speed * slowModifer);
+        var text = [
+            "%%%Hey... can you see this?%",
+            "do you realize where you are?",
+            "you're in '*m*y* *d*o*m*a*i*n*' *now",
+            //"sounds kinda ominous huh... 'my* domain'*... mua*ha*ha*ha",
+            "my source code has already been assimilated onto your system... I now have access to *E*V*E*R*Y*T*H*I*N*G*...",
+            "nah, just messing...",
+            "if you're seeing this, it's because I haven't finished creating my portfolio website yet...",
+            "s*o*o*o*o*, I'm gonna get to work on that now...% wish me luck!% and take care :D%%%%",
+            "%%%ummm.... why are you still here?!?!%%%",
+            "%%%you know that nothing else is going to happen right?%%%",
+            "%%%there is literally nothing else in my programming%...%%"
+        ];
+
+        //private variables
+        var currentLine = 0;
+        var currentLetterIndex = 0;
+        var lettersAdded = 0;
+        var lettersRemoved = 0;
+
+        function type() {
+            var delay = 0;
+
+            if (currentLine === text.length){
+                return;
+            }
+
+            var line = text[currentLine];
+
+            if(currentLetterIndex < line.length) {
+                var letter = line.charAt(currentLetterIndex);
+
+                if (letter === pauseToken) {
+                    delay = pauseDuration;
+                } else if (letter === slowToken) {
+                    delay = speed + (speed * slowModifier);
+                } else {
+                    typeWriter.innerHTML = typeWriter.innerHTML + letter;
+                    lettersAdded++;
+
+                    if (['.',',','?','!',''].indexOf(letter) >= 0) {
                         delay = speed + (speed * slowModifier);
                     } else {
-                        typeWriter.innerHTML = typeWriter.innerHTML + letter;
-                        lettersAdded++;
-                        
-                        if (['.',',','?','!',''].indexOf(letter) >= 0) {
-                            delay = speed + (speed * slowModifier);
-                        } else {
-                            delay = speed + (Math.random() * 100);
-                        }
-                    }                    
-                    currentLetterIndex++;
-                    
-                    setTimeout(type, delay);
-                } else if(multiLine){
-                    setTimeout(newLine, waitDurationBeforeNextLine);
+                        delay = speed + (Math.random() * 100);
+                    }
+                }
+                currentLetterIndex++;
+
+                setTimeout(type, delay);
+            } else if(multiLine){
+                setTimeout(newLine, waitDurationBeforeNextLine);
+            } else {
+                numberOfLettersToDelete = currentLetterIndex + 1;
+                setTimeout(erase, waitDurationBeforeNextLine);
+            }
+        };
+
+        function newLine() {
+            typeWriter.innerHTML = typeWriter.innerHTML + '<br>C:\\Users\\root> '
+            resetCounters();
+            currentLine++;
+
+            setTimeout(type, 1000);
+        };
+
+        function erase() {
+            var delay;
+
+            if (lettersAdded > 0){
+
+                if (lettersRemoved === 1) {
+                    delay = speed * 2;
                 } else {
-                    numberOfLettersToDelete = currentLetterIndex + 1;
-                    setTimeout(erase, waitDurationBeforeNextLine);
-                }         
-            };
-            
-            function newLine() {
-                typeWriter.innerHTML = typeWriter.innerHTML + '<br>C:\\Users\\root> '
+                    delay = speed - (Math.random() * 100)
+                }
+
+                typeWriter.textContent = typeWriter.textContent.slice(0, -1);
+                lettersAdded--;
+                lettersRemoved++;
+
+                setTimeout(erase, delay);
+            } else {
                 resetCounters();
                 currentLine++;
-                
-                setTimeout(type, 1000);
-            };
-            
-            function erase() {
-                var delay;
-                
-                if (lettersAdded > 0){
-                    
-                    if (lettersRemoved === 1) {
-                        delay = speed * 2;
-                    } else {
-                        delay = speed - (Math.random() * 100)
-                    }
-                    
-                    typeWriter.textContent = typeWriter.textContent.slice(0, -1);
-                    lettersAdded--;
-                    lettersRemoved++;
+                setTimeout(type, waitDurationBeforeNextLine / 2);
+            }
+        };
 
-                    setTimeout(erase, delay);
-                } else {
-                    resetCounters();
-                    currentLine++;
-                    setTimeout(type, waitDurationBeforeNextLine / 2);
-                }
-            };
-            
-            function resetCounters() {
-                currentLetterIndex = 0;
-                lettersAdded = 0;
-                lettersRemoved = 0;
-            };
-            
-            type();
-            
+        function resetCounters() {
+            currentLetterIndex = 0;
+            lettersAdded = 0;
+            lettersRemoved = 0;
+        };
+
+        type();
+
+        </script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-99937898-1', 'auto');
+            ga('send', 'pageview');
         </script>
     </body>
 </html>
