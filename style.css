@@ -1,0 +1,321 @@
+/* ---------------------------------------------------
+    CSS VARIABLES
+--------------------------------------------------- */
+:root {
+    --primary-color: #FFB633;
+    --primary-color-dark: #ffa400;
+    --primary-color-light: #FECE46;
+    
+    --default-font-size: 1.4rem;
+    --default-font-color: #999;
+}
+
+/* ---------------------------------------------------
+    CSS RESET
+--------------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* This defines what 1rem is | 62.5% = 10px (browser default: 16px) */
+    font-size: 62.5%; /* 1 rem = 10px; */
+    font-family: 'Raleway', sans-serif;
+}
+
+.container {
+    width: 100rem;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 12rem 0;
+}
+.no-padding {
+    padding: 0;
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 3rem;
+    user-select: none;
+}
+h2::after {
+    content: "";
+    display: block;
+    border-bottom: .3rem solid var(--primary-color);
+    width: 8rem;
+    margin-top: 1rem;
+}
+
+p {
+    font-size: 1.4rem;
+    color: var(--default-font-color);
+    line-height: 2.5rem;
+}
+
+/* ---------------------------------------------------
+    HEADER / JUMBOTRON SECTION
+--------------------------------------------------- */
+.header {
+    height: 65rem;
+    position: relative;
+    background-image: linear-gradient(to right, white 0%, white 65%, var(--primary-color) 65%);
+}
+.header .text-box {
+    max-width: 32rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.header .text-box__text > * {
+    margin-bottom: .5rem;
+    text-transform: capitalize;
+}
+.header .text-box__text--greeting {
+    color: var(--default-font-color);;
+    font-size: 2rem;
+    display: block;
+}
+.header .text-box__text--primary {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 6rem;
+    display: block;
+    line-height: 5rem;
+}
+.header .text-box__text--subtext {
+    color: #555;
+    font-size: 2.7rem;
+    display: block;
+}
+.header a.btn {
+    margin-top: 3rem;
+}
+.header .img {
+    height: 85%;
+    width: 45rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 1px solid blue;
+}
+
+/* ---------------------------------------------------
+    ABOUT-ME SECTION
+--------------------------------------------------- */
+.about-me {
+    background-color: #fafafa;
+}
+.about-me .img {
+    height: 35rem;
+    width: 30rem;
+    max-width: 50%;
+    display: inline-block;
+    background-color: white;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+    position: relative;
+    transition: all .3s;    
+}
+.about-me .img:hover {
+    box-shadow: 0 1rem 6rem rgba(0,0,0,.2);
+    transform: scale(1.05);
+}
+.about-me .text-box {
+    display: inline-block;
+    max-width: 50%;
+    margin-left: 10rem;
+    vertical-align: top;
+}
+.about-me .text-box p:not(:last-child) {
+    margin-bottom: 3rem;
+}
+.about-me .text-box a:not(:last-child) {
+    margin-right: 1rem;
+}
+
+/* ---------------------------------------------------
+    EDUCATION SECTION
+--------------------------------------------------- */
+.education {
+    background-color: white;
+}
+.education .text-box {
+    width: 60%;
+    margin-bottom: 3rem;
+}
+.education .schools {
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.education .schools .school {
+    display: table-cell;
+    border: 1px solid #ddd;
+    padding: 6rem 3rem;
+    background-color: white;
+    transition: all .2s;
+}
+.education .schools .school:hover {
+    box-shadow: 0 0 4rem rgba(0,0,0,.2);
+    transform: scale(1.05);
+}
+.education .schools > *:not(:first-child) {
+    border-left: none;
+}
+.education .schools .active {
+    background-color: var(--primary-color-light);
+}
+.education .schools .school span {
+    display: block;
+    color: var(--default-font-color);;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+.education .schools .school .title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #555;
+}
+.education .schools .school .description {
+    font-size: 1.4rem;
+    line-height: 2rem;
+    margin-top: 2rem;
+}
+.education .schools .active span {
+    color: #555;
+}
+
+/* ---------------------------------------------------
+    PROJECTS SECTION
+--------------------------------------------------- */
+.projects {
+    background-color: #222222;
+}
+
+.projects .container {
+    padding-bottom: 6rem;
+}
+
+.projects h2::after { border-color: white; } 
+.projects h2,
+.projects p {
+    color: white;
+    display: inline-block;
+}
+.projects h2 {
+    width: 55%;
+}
+.projects p {
+    width: 44%;
+    vertical-align: top;
+    padding-top: 2rem;
+}
+
+/* CAROUSEL */
+.carousel {
+
+}
+.carousel .slider {
+    display: flex;
+}
+.carousel .slide {
+    flex: 1 1 auto;
+    margin: 0 1rem;
+}
+.carousel .slide .img {
+    /* background: var(--primary-color); */
+    height: 30rem;
+    background-color: #F2C700;
+}
+.carousel .slide .text-box {
+    height: 20rem;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+
+/* ---------------------------------------------------
+   FOOTER
+--------------------------------------------------- */
+.footer {
+    width: 100rem;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 3rem 0;
+}
+
+.footer-text {
+    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(200,200,200,.3);
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 1rem;
+    font-size: 1.4rem;
+}
+
+.footer-text > * {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: .5rem;
+    color: var(--default-font-color);
+    display: block;
+}
+.footer-text__secondary {
+    font-size: 1rem;    
+}
+
+.footer-text a,
+.footer-text a:link,
+.footer-text a:visited {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+
+/* ---------------------------------------------------
+   BUTTON
+--------------------------------------------------- */
+
+a.btn,
+a.btn:link,
+a.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: .3rem;
+    position: relative;
+    font-size: var(--default-font-size);
+    transition: all .2s;
+    user-select: none;
+}
+
+a.btn-clear {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+a.btn-clear:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.05);
+}
+
+a.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+a.btn-primary:hover {
+    background: var(--primary-color-dark);
+    transform: scale(1.05);
+}
