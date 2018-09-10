@@ -82,13 +82,27 @@ p::selection {
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .container {
+        width: 100%;
+        padding: 10rem 5rem;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .container {
+        width: 40rem;
+    }
+}
+
+
 /* ---------------------------------------------------
     HEADER / JUMBOTRON SECTION
 --------------------------------------------------- */
 .header {
     height: 65rem;
     position: relative;
-    background-image: linear-gradient(to right, white 0%, white 65%, var(--primary-color) 65%);
+    background-image: linear-gradient(to right, white 0%,white 60%,var(--primary-color) 60%);
 }
 .header .text-box {
     max-width: 32rem;
@@ -130,16 +144,15 @@ p::selection {
     /* border: 1px solid blue; */
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 800px) {
     .header {
-        /* height: 50rem; */
+        height: 50rem;
+        background-image: linear-gradient(to right, white 0%,white 100%);
     }
     .header .text-box {
-        /* max-width: 100%;
-        position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); */
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -150,26 +163,29 @@ p::selection {
     background-color: #f7f7f7;
 }
 .about-me .img-box {
-    height: 40rem;
-    width: 35rem;
-    max-width: 50%;
+    height: 100%;
+    width: 45%;
     display: inline-block;
-    box-shadow: 0 0 2rem rgba(0,0,0,.3);
     position: relative;
-    transition: all .4s;
+}
+.about-me .img-box .img {
+    height: 42rem;
+    width: 35rem;
+    border: 1.75rem solid #fcfcfc;
+    box-shadow: 0 0 2rem rgba(0,0,0,.3);
     background-image: url(img/hand.jpeg);
     background-size: cover;
     background-position: center;
-    border-radius: 3px;
+    transform: rotate(-5deg);
+    transition: box-shadow .5s, transform .5s;
 }
-.about-me .img-box:hover {
-    box-shadow: 0 1rem 8rem rgba(0,0,0,.3);
-    transform: scale(1.05);
+.about-me .img-box .img:hover {
+    box-shadow: 0 1rem 6rem rgba(0,0,0,.3);
+    transform: scale(1.02);
 }
 .about-me .text-box {
     display: inline-block;
-    max-width: 50%;
-    margin-left: 10rem;
+    width: 50%;
     vertical-align: top;
 }
 .about-me .text-box p:not(:last-child) {
@@ -179,17 +195,13 @@ p::selection {
     margin-right: 1rem;
 }
 
-@media only screen and (max-width: 1101px) {
-    
+@media only screen and (max-width: 1100px) {
     .about-me .img-box {
         display: none;
     }
     .about-me .text-box {
         margin-left: 0;
-        max-width: 100%;
-    }
-    .about-me {
-        margin: 0 auto;
+        width: 100%;
     }
 }
 
@@ -218,8 +230,6 @@ p::selection {
     padding: 6rem 3rem;
     background-color: white;
     transition: all .4s;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
 }
 
 .education .schools .school:hover {
@@ -255,7 +265,7 @@ p::selection {
     color: #555;
 }
 
-@media only screen and (max-width: 1101px) {
+@media only screen and (max-width: 1100px) {
     .education .text-box {
         width: 100%;
     }
@@ -338,21 +348,20 @@ p::selection {
     margin: 0 auto;
     position: relative;
     padding: 3rem 0;
+    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(200,200,200,.3);
 }
 
 .footer-text {
-    border-top: 1px solid #ddd;
-    border-top: 1px solid rgba(200,200,200,.3);
     text-align: center;
     margin: 0 auto;
-    padding-top: 1rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .footer-text > * {
     width: 70%;
     margin: 0 auto;
-    padding-top: .5rem;
+    padding-top: .2rem;
     color: var(--default-font-color);
     display: block;
 }
@@ -390,13 +399,21 @@ a.btn-clear {
     background: transparent;
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
-
-    /* color: #222;
-    border: 1px solid #222; */
 }
 a.btn-clear:hover {
     background: var(--primary-color);
     color: white;
+    transform: scale(1.05);
+}
+
+a.btn-clear.white {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+a.btn-clear.white:hover {
+    background: white;
+    color: #444;
     transform: scale(1.05);
 }
 
@@ -405,6 +422,5 @@ a.btn-primary {
     color: white;
 }
 a.btn-primary:hover {
-    background: var(--primary-color-dark);
     transform: scale(1.05);
 }
