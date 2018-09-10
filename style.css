@@ -5,6 +5,9 @@
     --primary-color: #FFB633;
     --primary-color-dark: #ffa400;
     --primary-color-light: #FECE46;
+
+    --navy-light: #1F2E45;
+    --navy-dark: #1C293F;
     
     --default-font-size: 1.4rem;
     --default-font-color: #999;
@@ -26,6 +29,13 @@ html {
     font-size: 62.5%; /* 1 rem = 10px; */
     font-family: 'Raleway', sans-serif;
 }
+@media only screen and (min-width: 1690px) {
+    .wrapper {
+        max-width: 169rem;
+        margin: 1% auto;
+        box-shadow: 0 1rem 6rem rgba(0,0,0,.2);
+    }
+}
 
 .container {
     width: 100rem;
@@ -33,10 +43,12 @@ html {
     margin: 0 auto;
     position: relative;
     padding: 12rem 0;
+    box-sizing: border-box;
 }
 .no-padding {
     padding: 0;
 }
+
 
 h2 {
     font-size: 4rem;
@@ -58,6 +70,17 @@ p {
     color: var(--default-font-color);
     line-height: 2.5rem;
 }
+p::selection {
+    background: var(--primary-color-light);
+    color: #444;
+}
+
+@media only screen and (max-width: 1100px) {
+    .container {
+        width: 70rem;
+        margin: 0 auto;
+    }
+}
 
 /* ---------------------------------------------------
     HEADER / JUMBOTRON SECTION
@@ -76,6 +99,7 @@ p {
 .header .text-box__text > * {
     margin-bottom: .5rem;
     text-transform: capitalize;
+    user-select: none;
 }
 .header .text-box__text--greeting {
     color: var(--default-font-color);;
@@ -103,27 +127,43 @@ p {
     position: absolute;
     bottom: 0;
     right: 0;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+}
+
+@media only screen and (max-width: 850px) {
+    .header {
+        /* height: 50rem; */
+    }
+    .header .text-box {
+        /* max-width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); */
+    }
 }
 
 /* ---------------------------------------------------
     ABOUT-ME SECTION
 --------------------------------------------------- */
 .about-me {
-    background-color: #fafafa;
+    background-color: #f7f7f7;
 }
-.about-me .img {
-    height: 35rem;
-    width: 30rem;
+.about-me .img-box {
+    height: 40rem;
+    width: 35rem;
     max-width: 50%;
     display: inline-block;
-    background-color: white;
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+    box-shadow: 0 0 2rem rgba(0,0,0,.3);
     position: relative;
-    transition: all .3s;    
+    transition: all .4s;
+    background-image: url(img/hand.jpeg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px;
 }
-.about-me .img:hover {
-    box-shadow: 0 1rem 6rem rgba(0,0,0,.2);
+.about-me .img-box:hover {
+    box-shadow: 0 1rem 8rem rgba(0,0,0,.3);
     transform: scale(1.05);
 }
 .about-me .text-box {
@@ -139,36 +179,57 @@ p {
     margin-right: 1rem;
 }
 
+@media only screen and (max-width: 1101px) {
+    
+    .about-me .img-box {
+        display: none;
+    }
+    .about-me .text-box {
+        margin-left: 0;
+        max-width: 100%;
+    }
+    .about-me {
+        margin: 0 auto;
+    }
+}
+
 /* ---------------------------------------------------
     EDUCATION SECTION
 --------------------------------------------------- */
 .education {
     background-color: white;
+    position: relative;
 }
 .education .text-box {
     width: 60%;
     margin-bottom: 3rem;
 }
 .education .schools {
-    display: table;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    box-sizing: border-box;
     user-select: none;
 }
 
 .education .schools .school {
-    display: table-cell;
     border: 1px solid #ddd;
+    width: 33.3rem;
+    min-width: 33.3rem;
     padding: 6rem 3rem;
     background-color: white;
-    transition: all .2s;
+    transition: all .4s;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
+
 .education .schools .school:hover {
     box-shadow: 0 0 4rem rgba(0,0,0,.2);
-    transform: scale(1.05);
+    transform: translateY(-1rem);
 }
-.education .schools > *:not(:first-child) {
-    border-left: none;
+@media only screen and (min-width: 1101px) {
+    .education .schools > *:not(:first-child) {
+        border-left: none;
+    }
 }
 .education .schools .active {
     background-color: var(--primary-color-light);
@@ -194,18 +255,22 @@ p {
     color: #555;
 }
 
+@media only screen and (max-width: 1101px) {
+    .education .text-box {
+        width: 100%;
+    }
+    .education .schools {
+        margin: 0 auto;
+    }
+}
+
 /* ---------------------------------------------------
     PROJECTS SECTION
 --------------------------------------------------- */
 .projects {
     background-color: #222222;
 }
-
-.projects .container {
-    padding-bottom: 6rem;
-}
-
-.projects h2::after { border-color: white; } 
+.projects h2::after { border-color: white; }
 .projects h2,
 .projects p {
     color: white;
@@ -220,24 +285,45 @@ p {
     padding-top: 2rem;
 }
 
-/* CAROUSEL */
-.carousel {
 
+
+
+
+/* CAROUSEL */
+
+/* .projects .container {
+    padding-bottom: 6rem;
+} */
+.carousel {
+    overflow: hidden;
 }
 .carousel .slider {
-    display: flex;
+    width: 252rem;
+    padding-top: 1rem;
+    transform: translateX(-10rem);
+    overflow-x: hidden;
+    margin: 0 auto;
 }
 .carousel .slide {
-    flex: 1 1 auto;
+    display: inline-block;
+    width: 60rem;
+    height: 60rem;
     margin: 0 1rem;
+    transition: transform .4s;
+}
+.carousel .slide:hover {
+    transform: translateY(-1rem);
+}
+.carousel .slide:not(.center) {
+    -webkit-filter: grayscale(40%); /* Safari 6.0 - 9.0 */
+    filter: opacity(40%);
 }
 .carousel .slide .img {
-    /* background: var(--primary-color); */
-    height: 30rem;
+    height: 35rem;
     background-color: #F2C700;
 }
 .carousel .slide .text-box {
-    height: 20rem;
+    height: 25rem;
     background-color: white;
     border: 1px solid #ccc;
 }
@@ -247,7 +333,7 @@ p {
    FOOTER
 --------------------------------------------------- */
 .footer {
-    width: 100rem;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -304,6 +390,9 @@ a.btn-clear {
     background: transparent;
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
+
+    /* color: #222;
+    border: 1px solid #222; */
 }
 a.btn-clear:hover {
     background: var(--primary-color);
