@@ -65,9 +65,10 @@ p::selection {
     background: var(--primary-color-light);
     color: #444;
 }
-
-@media only screen and (min-width: 1690px) {
+@media only screen and (min-width: 2200px) {
     html { font-size: 75%; }
+}
+@media only screen and (min-width: 1690px) {
     .wrapper {
         max-width: 169rem;
         margin: 1% auto;
@@ -384,6 +385,7 @@ a.btn:link,
 a.btn:visited {
     text-transform: uppercase;
     text-decoration: none;
+    text-align: center;
     padding: 1.5rem 4rem;
     display: inline-block;
     border-radius: .3rem;
