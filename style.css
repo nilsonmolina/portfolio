@@ -121,6 +121,9 @@ p::selection {
     color: var(--default-font-color);;
     font-size: 2rem;
     display: block;
+    opacity: 0;
+    -webkit-animation: 1s fadeInLeft forwards;
+    animation: 1s fadeInLeft forwards;
 }
 .header .text-box__text--primary {
     color: var(--primary-color);
@@ -128,14 +131,23 @@ p::selection {
     font-size: 6rem;
     display: block;
     line-height: 5rem;
+    opacity: 0;
+    -webkit-animation: 1s fadeInLeft .7s forwards;
+    animation: 1s fadeInLeft .7s forwards;
 }
 .header .text-box__text--subtext {
     color: #555;
     font-size: 2.7rem;
     display: block;
+    opacity: 0;
+    -webkit-animation: 1s fadeInLeft 1.4s forwards;
+    animation: 1s fadeInLeft 1.4s forwards;
 }
 .header a.btn {
     margin-top: 3rem;
+    opacity: 0;
+    -webkit-animation: 1s fadeInBottom 3s forwards;
+    animation: 1s fadeInBottom 2s forwards;
 }
 .header .img {
     /* height: 85%;
@@ -288,17 +300,17 @@ p::selection {
     PROJECTS SECTION
 --------------------------------------------------- */
 .projects {
-    background-color: #333;
-    /* background-color: #f7f7f7; */
+    /* background-color: #333; */
+    background-color: #f7f7f7;
 }
 .projects .text-box {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
-.projects .text-box h2::after { border-color: white; }
+/* .projects .text-box h2::after { border-color: white; } */
 
 .projects .text-box h2,
 .projects .text-box p {
-    color: white;
+    /* color: white; */
     display: inline-block;
 }
 .projects .text-box h2 {
@@ -307,46 +319,23 @@ p::selection {
 .projects .text-box p {
     width: 44%;
     vertical-align: top;
-    padding-top: 2rem;
-}
-/* CAROUSEL */
-.projects .container {
-    padding-bottom: 6rem;
-}
-.carousel {
-    overflow: hidden;
-}
-.carousel .slider {
-    width: 252rem;
-    padding-top: 1rem;
-    transform: translateX(-10rem);
-    overflow-x: hidden;
-    margin: 0 auto;
-}
-.carousel .slide {
-    display: inline-block;
-    width: 60rem;
-    height: 60rem;
-    margin: 0 1rem;
-    transition: transform .4s;
-}
-.carousel .slide:hover {
-    transform: translateY(-1rem);
-}
-.carousel .slide:not(.center) {
-    -webkit-filter: grayscale(40%); /* Safari 6.0 - 9.0 */
-    filter: opacity(40%);
-}
-.carousel .slide .img {
-    height: 35rem;
-    background-color: #F2C700;
-}
-.carousel .slide .text-box {
-    height: 25rem;
-    background-color: white;
-    border: 1px solid #ccc;
+    /* padding-top: 2rem; */
 }
 
+
+.projects-list .project {
+    width: 47rem;
+    height: 50rem;
+    margin: 1.2rem;
+    display:inline-block;
+    background: white;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+    transition: all .3s;
+}
+.projects-list .project:hover {
+    box-shadow: 0 1rem 6rem rgba(0,0,0,.2);
+    transform: translateY(-.5rem);
+}
 
 /* ---------------------------------------------------
    FOOTER
@@ -435,3 +424,47 @@ a.btn-primary {
 a.btn-primary:hover {
     transform: scale(1.05);
 }
+
+
+/* ---------------------------------------------------
+   ANIMATIONS
+--------------------------------------------------- */
+
+@-webkit-keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(-10rem);
+              transform: translateX(-10rem); }
+    100% {
+      opacity: 1;
+      -webkit-transform: translate(0);
+              transform: translate(0); } }
+  
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateX(-10rem);
+              transform: translateX(-10rem); }
+    100% {
+      opacity: 1;
+      -webkit-transform: translate(0);
+              transform: translate(0); } }
+
+@-webkit-keyframes fadeInBottom {
+0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem); }
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
+
+@keyframes fadeInBottom {
+0% {
+    opacity: 0;
+    -webkit-transform: translateY(5rem);
+            transform: translateY(5rem); }
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
