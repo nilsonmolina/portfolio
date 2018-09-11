@@ -132,22 +132,22 @@ p::selection {
     display: block;
     line-height: 5rem;
     opacity: 0;
-    -webkit-animation: 1s fadeInLeft .7s forwards;
-    animation: 1s fadeInLeft .7s forwards;
+    -webkit-animation: 1s fadeInLeft 1s forwards;
+    animation: 1s fadeInLeft 1s forwards;
 }
 .header .text-box__text--subtext {
     color: #555;
     font-size: 2.7rem;
     display: block;
     opacity: 0;
-    -webkit-animation: 1s fadeInLeft 1.4s forwards;
-    animation: 1s fadeInLeft 1.4s forwards;
+    -webkit-animation: 1s fadeInLeft 2s forwards;
+    animation: 1s fadeInLeft 2s forwards;
 }
 .header a.btn {
     margin-top: 3rem;
     opacity: 0;
     -webkit-animation: 1s fadeInBottom 3s forwards;
-    animation: 1s fadeInBottom 2s forwards;
+    animation: 1s fadeInBottom 3s forwards;
 }
 .header .img {
     /* height: 85%;
@@ -322,18 +322,21 @@ p::selection {
     /* padding-top: 2rem; */
 }
 
-
+.projects-list {
+    /* width: 100%;
+    overflow: auto; */
+}
 .projects-list .project {
-    width: 47rem;
+    width: 45rem;
     height: 50rem;
-    margin: 1.2rem;
+    margin: 2rem;
     display:inline-block;
     background: white;
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
     transition: all .3s;
 }
 .projects-list .project:hover {
-    box-shadow: 0 1rem 6rem rgba(0,0,0,.2);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
     transform: translateY(-.5rem);
 }
 
