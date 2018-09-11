@@ -6,8 +6,11 @@
     --primary-color-dark: #ffa400;
     --primary-color-light: #FECE46;
 
-    --navy-light: #1F2E45;
-    --navy-dark: #1C293F;
+    --secondary-light: #1F2E45;
+    --secondary-dark: #1C293F;
+
+    --tertiary-light: #1F2E45;
+    --tertiary-dark: #1C293F;
     
     --default-font-size: 1.4rem;
     --small-font-size: 1.2rem;
@@ -15,7 +18,7 @@
 }
 
 /* ---------------------------------------------------
-    CSS RESET
+    BASE STYLES
 --------------------------------------------------- */
 *,
 *::before,
@@ -91,9 +94,9 @@ p::selection {
 @media only screen and (max-width: 430px) {
     .container {
         width: 40rem;
+        padding: 10rem 3rem; 
     }
 }
-
 
 /* ---------------------------------------------------
     HEADER / JUMBOTRON SECTION
@@ -182,7 +185,7 @@ p::selection {
 }
 .about-me .img-box .img:hover {
     box-shadow: 0 1rem 6rem rgba(0,0,0,.3);
-    transform: scale(1.02);
+    transform: scale(1.04);
 }
 .about-me .text-box {
     display: inline-block;
@@ -228,7 +231,7 @@ p::selection {
     border: 1px solid #ddd;
     width: 33.3rem;
     min-width: 33.3rem;
-    padding: 6rem 3rem;
+    padding: 5rem 3rem;
     background-color: white;
     transition: all .4s;
 }
@@ -275,34 +278,41 @@ p::selection {
     }
 }
 
+@media only screen and (max-width: 705px) {
+    .education .schools {
+        justify-content: center;
+    }
+}
+
 /* ---------------------------------------------------
     PROJECTS SECTION
 --------------------------------------------------- */
 .projects {
-    background-color: #222222;
+    background-color: #333;
+    /* background-color: #f7f7f7; */
 }
-.projects h2::after { border-color: white; }
-.projects h2,
-.projects p {
+.projects .text-box {
+    margin-bottom: 3rem;
+}
+.projects .text-box h2::after { border-color: white; }
+
+.projects .text-box h2,
+.projects .text-box p {
     color: white;
     display: inline-block;
 }
-.projects h2 {
+.projects .text-box h2 {
     width: 55%;
 }
-.projects p {
+.projects .text-box p {
     width: 44%;
     vertical-align: top;
     padding-top: 2rem;
 }
-
-
-
 /* CAROUSEL */
-
-/* .projects .container {
+.projects .container {
     padding-bottom: 6rem;
-} */
+}
 .carousel {
     overflow: hidden;
 }
@@ -349,6 +359,7 @@ p::selection {
     padding: 3rem 0;
     border-top: 1px solid #ddd;
     border-top: 1px solid rgba(200,200,200,.3);
+    background: white;
 }
 
 .footer-text {
