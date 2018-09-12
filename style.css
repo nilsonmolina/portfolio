@@ -168,7 +168,7 @@ p::selection {
 .laptop {
     width: 65rem;
     height: 35rem;
-    box-shadow: 0 4rem 4rem -4rem #222;
+    box-shadow: 0 5rem 4rem -5rem #222;
     /* opacity: 0; */
     /* -webkit-animation: 1s fadeInBottom 4s forwards;
     animation: 1s fadeInBottom 4s forwards; */
