@@ -168,6 +168,7 @@ p::selection {
 .laptop {
     width: 65rem;
     height: 35rem;
+    box-shadow: 0 4rem 4rem -4rem #222;
     /* opacity: 0; */
     /* -webkit-animation: 1s fadeInBottom 4s forwards;
     animation: 1s fadeInBottom 4s forwards; */
@@ -207,13 +208,16 @@ p::selection {
     font-size: 1rem;
     font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 }
+#console-text {
+    display: inline;
+    line-height: 1.7rem;
+}
 #typewriter {
     color: white;
 }
 #cursor{
     color: white;
     font-size: 1.2rem;
-    /* margin-left: -.5rem; */
     -webkit-animation: blink 1s infinite;
     animation: blink 1s infinite;
 }
@@ -224,7 +228,6 @@ p::selection {
     border-radius: 0 0 20px 20px;
     background: #d4d5d7;
     position: relative;
-    /* z-index: 1; */
 }
 .bottom::before {
     content: "";
@@ -236,17 +239,6 @@ p::selection {
     transform: translateX(-50%);
     border-radius: 0 0 10px 10px;
     background: #AAA;
-}
-.laptop-shadow {
-    display: inline-block;
-    width: 50%;
-    height: 1%;
-    margin: 0 auto;
-    background: rgba(0,0,0,.3);
-    border-radius: 50%;
-    /* margin-top: 1rem; */
-    /* -webkit-animation: 7s levitate-shadow infinite;
-    animation: 7s levitate-shadow infinite; */
 }
 
 @media only screen and (max-width: 800px) {
@@ -602,35 +594,20 @@ a.btn-small:visited {
     opacity: 1;
     -webkit-transform: translate(0); } }
 
-
-    
 @keyframes levitate {
     0% {
-		transform: translatey(0px);
+        transform: translateY(0px);
 	}
 	50% {
-		transform: translatey(-20px);
+        transform: translateY(-20px);
 	}
 	100% {
-		transform: translatey(0px);
-    } }
-@keyframes levitate-shadow {
-    0% {
-        transform: scale(1);
-        background-color: rgba(0,0,0,.3);
-    }
-    50% {
-        transform: scale(1.1 1.03);
-        background-color: rgba(200,200,200,.3);
-    }
-    100% {
-        transform: scale(1);
-        background-color: rgba(0,0,0,.3);
+        transform: translateY(0px);
     } }
 
-    @keyframes blink {
-        0% { opacity:1; }
-        49% { opacity:1; }
-        50% { opacity:0; }
-        100% { opacity:0; }
-    }
+@keyframes blink {
+    0% { opacity:1; }
+    49% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:0; }
+}
