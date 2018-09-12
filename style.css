@@ -202,7 +202,19 @@ p::selection {
 .content {
     height: 100%;
     width: 100%;
-    padding: .5rem;
+    padding: 1.5rem 2rem;
+    color: #ccc;
+    font-size: 1rem;
+    font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+}
+#typewriter {
+    color: white;
+}
+#cursor{
+    color: white;
+    font-size: 1.4rem;
+    -webkit-animation: blink 0.5s infinite;
+    animation: blink 0.5s infinite;
 }
 .bottom {
     width: 100%;
@@ -603,7 +615,7 @@ a.btn-small:visited {
 		transform: translatey(0px);
 	}
 	50% {
-		transform: translatey(-25px);
+		transform: translatey(-20px);
 	}
 	100% {
 		transform: translatey(0px);
@@ -621,3 +633,9 @@ a.btn-small:visited {
         transform: scale(1);
         background-color: rgba(0,0,0,.3);
     } }
+
+    @keyframes blink {
+        0% { opacity:1; }
+        50% { opacity:0; }
+        100% { opacity:1; }
+    }

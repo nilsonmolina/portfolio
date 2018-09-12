@@ -28,7 +28,14 @@
                         <div class="monitor">
                             <div class="screen">
                                 <div class="content">
-                                    <span class="cursor"></span>
+                                    <span id="console-text">
+                                        Microsoft Windex [Version 13.0.14393] <br>
+                                        (c) 2017 Microsoft Corporation. All your rights belong to me.<br>
+                                        <br>
+                                        C:\Users\root> 
+                                    </span>
+                                    <span id="typewriter"></span>
+                                    <span id="cursor">_</span>
                                 </div>
                             </div>
                         </div>
@@ -234,5 +241,118 @@
             </div>                
         </footer>
     </div>
+
+    <script>
+        /*-----------------------------------------------------
+            Wow, I wrote this over a year ago... It's funny
+            looking back at old code. Well, I didn't make 
+            any changes cus if it ain't broke, don't fix it!
+        -----------------------------------------------------*/
+        // configuration
+        var typeWriter = document.getElementById('typewriter');
+        var multiLine = false;
+        var speed = 65;
+        var waitDurationBeforeNextLine = 4000;
+        var pauseToken = '%';
+        var pauseDuration = 2000;
+        var slowToken = '*';
+        var slowModifier = 3; //speed = speed + (speed * slowModifer);
+        var text = [
+            "%%%Hey... can you see this?%",
+            "do you realize where you are?",
+            "you're in '*m*y* *d*o*m*a*i*n*' *now",
+            //"sounds kinda ominous huh... 'my* domain'*... mua*ha*ha*ha",
+            "my source code has already been assimilated onto your system... I now have access to *E*V*E*R*Y*T*H*I*N*G*...",
+            "nah, just messing...",
+            "if you're seeing this, it's because I haven't finished creating my portfolio website yet...",
+            "s*o*o*o*o*, I'm gonna get to work on that now...% wish me luck!% and take care :D%%%%",
+            "%%%ummm.... why are you still here?!?!%%%",
+            "%%%you know that nothing else is going to happen right?%%%",
+            "%%%there is literally nothing else in my programming%...%%"
+        ];
+
+        //private variables
+        var currentLine = 0;
+        var currentLetterIndex = 0;
+        var lettersAdded = 0;
+        var lettersRemoved = 0;
+
+        function type() {
+            var delay = 0;
+
+            if (currentLine === text.length){
+                return;
+            }
+
+            var line = text[currentLine];
+
+            if(currentLetterIndex < line.length) {
+                var letter = line.charAt(currentLetterIndex);
+
+                if (letter === pauseToken) {
+                    delay = pauseDuration;
+                } else if (letter === slowToken) {
+                    delay = speed + (speed * slowModifier);
+                } else {
+                    typeWriter.innerHTML = typeWriter.innerHTML + letter;
+                    lettersAdded++;
+
+                    if (['.',',','?','!',''].indexOf(letter) >= 0) {
+                        delay = speed + (speed * slowModifier);
+                    } else {
+                        delay = speed + (Math.random() * 100);
+                    }
+                }
+                currentLetterIndex++;
+
+                setTimeout(type, delay);
+            } else if(multiLine){
+                setTimeout(newLine, waitDurationBeforeNextLine);
+            } else {
+                numberOfLettersToDelete = currentLetterIndex + 1;
+                setTimeout(erase, waitDurationBeforeNextLine);
+            }
+        };
+
+        function newLine() {
+            typeWriter.innerHTML = typeWriter.innerHTML + '<br>C:\\Users\\root> '
+            resetCounters();
+            currentLine++;
+
+            setTimeout(type, 1000);
+        };
+
+        function erase() {
+            var delay;
+
+            if (lettersAdded > 0){
+
+                if (lettersRemoved === 1) {
+                    delay = speed * 2;
+                } else {
+                    delay = speed - (Math.random() * 100)
+                }
+
+                typeWriter.textContent = typeWriter.textContent.slice(0, -1);
+                lettersAdded--;
+                lettersRemoved++;
+
+                setTimeout(erase, delay);
+            } else {
+                resetCounters();
+                currentLine++;
+                setTimeout(type, waitDurationBeforeNextLine / 2);
+            }
+        };
+
+        function resetCounters() {
+            currentLetterIndex = 0;
+            lettersAdded = 0;
+            lettersRemoved = 0;
+        };
+
+        type();
+
+    </script>
 </body>
 </html>
