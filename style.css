@@ -26,6 +26,7 @@
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    user-select: none;
 }
 
 html {
@@ -49,7 +50,6 @@ h2 {
     font-weight: 700;
     color: #444;
     margin-bottom: 3rem;
-    user-select: none;
 }
 h2::after {
     content: "";
@@ -63,6 +63,7 @@ p {
     font-size: 1.4rem;
     color: var(--default-font-color);
     line-height: 2.5rem;
+    user-select: text;
 }
 p::selection {
     background: var(--primary-color-light);
@@ -108,7 +109,7 @@ p::selection {
 .header {
     height: 65rem;
     position: relative;
-    background-image: linear-gradient(to right, white 0%,white 60%,var(--primary-color) 60%);
+    background-image: linear-gradient(to right, white 0%,white 60%,var(--primary-color) 60%, var(--primary-color-dark) 100%);
 }
 .header .text-box {
     max-width: 32rem;
@@ -119,7 +120,6 @@ p::selection {
 .header .text-box__text > * {
     margin-bottom: .5rem;
     text-transform: capitalize;
-    user-select: none;
 }
 .header .text-box__text--greeting {
     color: var(--default-font-color);;
@@ -153,21 +153,105 @@ p::selection {
     -webkit-animation: 1s fadeInBottom 3s forwards;
     animation: 1s fadeInBottom 3s forwards;
 }
-.header .img {
-    /* height: 85%;
-    width: 45rem;
-    position: absolute;
-    bottom: 0;
-    right: 0; */
-    /* border: 1px solid blue; */
 
-    display: none;
+.header .img {
+    margin: 0 auto;
+    position: absolute;
+    right: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform .4s;
 }
+.header .img:hover {
+    transform: translateY(-50%) scale(1.02);
+}
+.laptop {
+    width: 65rem;
+    height: 35rem;
+    /* opacity: 0; */
+    /* -webkit-animation: 1s fadeInBottom 4s forwards;
+    animation: 1s fadeInBottom 4s forwards; */
+    -webkit-animation: 7s levitate infinite;
+    animation: 7s levitate infinite;
+}
+.monitor {
+    width: 83%;
+    height: 96%;
+    padding: 2rem;
+    margin: 0 auto;
+    background: #333;
+    border-radius: 10px 10px 0 0;
+    border: .3rem solid #d4d5d7;
+}
+.monitor::before {
+    content: "";
+    width: .5rem;
+    height: .5rem;
+    position: absolute;
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: #5a5a5a;
+    background-image: radial-gradient(#000, #ddd);
+}
+.screen {
+    height: 100%;
+    background-color: #222;
+}
+.content {
+    height: 100%;
+    width: 100%;
+    padding: .5rem;
+}
+.bottom {
+    width: 100%;
+    height: 6%;
+    margin-top: -1%;
+    border-radius: 0 0 20px 20px;
+    background: #d4d5d7;
+    position: relative;
+    /* z-index: 1; */
+}
+.bottom::before {
+    content: "";
+    width: 15%;
+    height: 45%;
+    position: absolute;
+    top: 0;    
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 10px 10px;
+    background: #AAA;
+}
+.laptop-shadow {
+    display: inline-block;
+    width: 50%;
+    height: 1%;
+    margin: 0 auto;
+    background: rgba(0,0,0,.3);
+    border-radius: 50%;
+    /* margin-top: 1rem; */
+    /* -webkit-animation: 7s levitate-shadow infinite;
+    animation: 7s levitate-shadow infinite; */
+}
+.cursor {
+    display: inline-block;
+    color: #EEE;
+    height: 1.2rem;
+    
+}
+
 
 @media only screen and (max-width: 800px) {
     .header {
         height: 50rem;
         background-image: linear-gradient(to right, white 0%,white 100%);
+    }
+}
+@media only screen and (max-width: 1100px) {
+    .header .img {
+        display: none;
     }
 }
 
@@ -239,7 +323,6 @@ p::selection {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    user-select: none;
 }
 
 .education .schools .school {
@@ -344,7 +427,6 @@ p::selection {
     top: 1.25rem;
     top: 0;
     right: 0;
-    user-select: none;
 }
 .project-list .project .img-box .tech-stack span {
     background: #000;
@@ -385,10 +467,8 @@ p::selection {
    FOOTER
 --------------------------------------------------- */
 .footer {
+    /* width: 100vw; */
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
-    position: relative;
     padding: 3rem 0;
     border-top: 1px solid #ddd;
     border-top: 1px solid rgba(200,200,200,.3);
@@ -402,7 +482,6 @@ p::selection {
 }
 
 .footer-text > * {
-    width: 70%;
     margin: 0 auto;
     padding-top: .2rem;
     color: var(--default-font-color);
@@ -434,7 +513,6 @@ a.btn:visited {
     display: inline-block;
     font-size: var(--default-font-size);
     transition: all .2s;
-    user-select: none;
     box-sizing: border-box;
 }
 
@@ -480,24 +558,24 @@ a.btn-small:visited {
 --------------------------------------------------- */
 
 @-webkit-keyframes fadeInLeft {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateX(-10rem);
-              transform: translateX(-10rem); }
-    100% {
-      opacity: 1;
-      -webkit-transform: translate(0);
-              transform: translate(0); } }
-  
-  @keyframes fadeInLeft {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateX(-10rem);
-              transform: translateX(-10rem); }
-    100% {
-      opacity: 1;
-      -webkit-transform: translate(0);
-              transform: translate(0); } }
+0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem); }
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
+
+@keyframes fadeInLeft {
+0% {
+    opacity: 0;
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem); }
+100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
 
 @-webkit-keyframes fadeInBottom {
 0% {
@@ -516,4 +594,30 @@ a.btn-small:visited {
             transform: translateY(5rem); }
 100% {
     opacity: 1;
-    -webkit-transform: translate(0);
+    -webkit-transform: translate(0); } }
+
+
+    
+@keyframes levitate {
+    0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-25px);
+	}
+	100% {
+		transform: translatey(0px);
+    } }
+@keyframes levitate-shadow {
+    0% {
+        transform: scale(1);
+        background-color: rgba(0,0,0,.3);
+    }
+    50% {
+        transform: scale(1.1 1.03);
+        background-color: rgba(200,200,200,.3);
+    }
+    100% {
+        transform: scale(1);
+        background-color: rgba(0,0,0,.3);
+    } }
