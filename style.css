@@ -241,16 +241,16 @@ p::selection {
     background: #AAA;
 }
 
+@media only screen and (max-width: 705px) {
+    .header .img { display: none; }
+}
 @media only screen and (max-width: 800px) {
     .header {
         height: 50rem;
         background-image: linear-gradient(to right, white 0%,white 100%);
     }
-    .header .img {
-        display: none;
-    }
+    .header .img { margin-right: 5rem; }
 }
-
 /* Makes the device an iPad Pro */
 @media only screen and (max-width: 1100px) {
     .device {
@@ -387,7 +387,7 @@ p::selection {
 }
 .education .schools .active {
     background: var(--primary-color-light);
-    background: linear-gradient(to bottom right, var(--primary-color-light), var(--primary-color));
+    /* background: linear-gradient(to bottom right, var(--primary-color-light), var(--primary-color)); */
 
 }
 .education .schools .school span {
