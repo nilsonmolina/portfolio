@@ -200,7 +200,7 @@ p::selection {
     height: 100%;
     width: 100%;
     padding: 1.5rem 2rem;
-    color: #ccc;
+    color: #aaa;
     font-size: 1rem;
     font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 }
@@ -217,6 +217,9 @@ p::selection {
     -webkit-animation: blink 1s infinite;
     animation: blink 1s infinite;
 }
+.device .text-blue {color: #007FFF; }
+.device .text-yellow {color: #ff0; }
+.device .text-green { color: #0b0 }
 .device .bottom {
     width: 100%;
     height: 6%;
