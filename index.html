@@ -187,7 +187,7 @@
                                 Burger Builder
                             </span>
                             <span class="description">
-                                This project was part of a training course focusing on React and Redux. The backed consisted of firebase for both authentication and as a NoSQL database. 
+                                This project was part of a training course focusing on React and Redux. Firebase is used in the backend for both authentication and as a NoSQL database. 
                             </span>
                             <div class="buttons">
                                 <a href="https://github.com/nilsonmolina/react-basics" class="btn btn-default btn-small" target="_blank">See Code</a>
@@ -217,7 +217,7 @@
         -----------------------------------------------------*/
         // configuration
         var typeWriter = document.getElementById('typewriter'),
-            speed = 65,
+            speed = 60,
             multiLine = false,
             waitDurationBeforeNextLine = 4000,
             pauseToken = '%',
@@ -227,9 +227,9 @@
             text = [
             "%%%Welcome to my portfolio website!%",
             "I built this site without the need for any frameworks, libraries, plugins, preprocessors, etc...",
-            "It's pretty much entirely raw HTML and CSS.% I don't even use JS.*.*.% well, except for outputting these messages ofcourse.",
-            "Although it would've been easier to use other tools to make this site, I wanted to show that I knew the fundamentals and that we don't always need to use bloated libraries to make something look modern and be responsive.",
-            "Speaking of responsive, did you know that the device outputting my messages changes based on window size?% Give it a try, and resize this window.%",
+            "It's pretty much entirely raw HTML and CSS.% I don't even use JS.*.*.% well, except for outputting these messages of course.",
+            "Although it would've been easier to use other tools to make this site, I wanted to show that I am comfortable with the fundamentals.",
+            "Speaking of responsive, did you know that the device outputting my messages changes based on window size?% It transforms between a laptop and a tablet depending on the browser window size.%",
             "I built these devices entirely out of HTML/CSS and I'm pretty happy with how they came out!%",
             "Anyways, that's it for now, hope you like the site!%%%%%",
             "%%%%%%Wow, I can't believe you're still here.%% You haven't been waiting for more messages all this time have you?%%%%",
@@ -290,8 +290,7 @@
         function erase() {
             var delay;
 
-            if (lettersAdded > 0){
-
+            if (lettersAdded > 0) {
                 if (lettersRemoved === 1) {
                     delay = speed * 2;
                 } else {
