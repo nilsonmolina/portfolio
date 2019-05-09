@@ -317,7 +317,7 @@ p::selection {
 .about-me {
     background-color: #f7f7f7;
 }
-.about-me .img-box {
+/* .about-me .img-box {
     height: 100%;
     width: 45%;
     display: inline-block;
@@ -341,14 +341,22 @@ p::selection {
 }
 .about-me .img-box:hover .img{
     box-shadow: 0 1rem 6rem rgba(0,0,0,.3);
-}
+} */
 .about-me .text-box {
     display: inline-block;
-    width: 50%;
+    width: 60%;
     vertical-align: top;
 }
-.about-me .text-box p:not(:last-child) {
+.about-me .text-box .tech-stack {
+    display: block;
+    margin-top: 1rem;
     margin-bottom: 3rem;
+    font-size: 1.4rem;
+    color: var(--default-font-color);
+}
+.about-me .text-box .tech-stack h4 {
+    padding-top: .7rem;
+    color: #777;
 }
 .about-me .text-box a:not(:last-child) {
     margin-right: 1rem;
