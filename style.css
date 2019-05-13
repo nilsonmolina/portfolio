@@ -356,7 +356,8 @@ p::selection {
 }
 .about-me .text-box .tech-stack h4 {
     padding-top: .7rem;
-    color: #777;
+    padding-bottom: .5rem;
+    color: #888;
 }
 .about-me .text-box a:not(:last-child) {
     margin-right: 1rem;
