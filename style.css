@@ -381,6 +381,13 @@ p::selection {
     }
 }
 
+@media only screen and (max-width: 550px) {
+    .about-me .current-stack svg {
+        width: 20%;
+        margin: .75rem .85rem;
+    }
+}
+
 /* ---------------------------------------------------
     EDUCATION SECTION
 --------------------------------------------------- */
