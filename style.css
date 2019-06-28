@@ -468,8 +468,8 @@ p::selection {
 .projects {
     background-color: #f7f7f7;
 }
-.projects h2.side-projects {
-    margin-top: 6rem;
+.projects.side-projects {
+    background-color: #ffffff;
 }
 .project-list {
     display: flex;
@@ -523,6 +523,10 @@ p::selection {
     font-size: 1.2rem;
     padding: .5rem 1rem;
     margin: -.5rem .2rem .5rem .2rem;
+}
+.project-list .project .img-box .tech-stack span.warning {
+    background: var(--primary-color);
+    color: #444;
 }
 .project-list .project .text-box {
     height: 17rem;
