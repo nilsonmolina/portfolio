@@ -615,7 +615,8 @@ a.btn-clear {
 a.btn-clear:hover {
     background-color: var(--primary-color);
     color: white;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    transform: translate(0, -2px);
 }
 .btn-default {
     background: transparent;
@@ -625,7 +626,8 @@ a.btn-clear:hover {
 .btn-default:hover {
     background-color: #555;
     color: white;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    transform: translate(0, -2px);
 }
 
 a.btn-primary {
@@ -635,7 +637,8 @@ a.btn-primary {
     color: white;
 }
 a.btn-primary:hover {
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    transform: translate(0, -2px);
 }
 
 a.btn-small,
